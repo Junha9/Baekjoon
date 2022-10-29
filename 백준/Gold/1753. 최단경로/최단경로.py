@@ -2,7 +2,7 @@ import sys
 from collections import deque, defaultdict
 from heapq import heapify, heappop, heappush
 
-
+INF = 10000000
 V, E = map(int, sys.stdin.readline().split())
 K = int(sys.stdin.readline())
 graph = defaultdict(list)
@@ -10,7 +10,8 @@ for i in range(E):
     info = list(map(int, sys.stdin.readline().split()))
     graph[info[0]].append((info[1],info[2]))
 
-distance = [float('inf')] * (V+1)
+
+distance = [INF] * (V+1)
 def dijkstra():
     que = []
     heappush(que, (0, K))
@@ -28,7 +29,7 @@ def dijkstra():
 dijkstra()
 
 for i in range(1, V+1):
-    if distance[i] == float('inf'):
+    if distance[i] == INF:
         print('INF')
     else:
         print(distance[i])
